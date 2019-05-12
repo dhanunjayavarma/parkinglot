@@ -7,17 +7,18 @@ public class ParkingLot {
     AutomatedTicketSystem ticketSystem;
     private int maxNumberOfParkingSlots;
     private int ONE = 1;
-    private int occupiedParkingSlots=0;
+    private int occupiedParkingSlots = 0;
 
-    private ParkingLot(int maxNumberOfParkingSlots) {
-        ticketSystem=new AutomatedTicketSystem();
+    private ParkingLot(AutomatedTicketSystem ticketSystem,int maxNumberOfParkingSlots) {
+        this.ticketSystem =ticketSystem;
         this.maxNumberOfParkingSlots = maxNumberOfParkingSlots;
         intializeParkingSpots(this.maxNumberOfParkingSlots);
     }
 
-    public static ParkingLot getInstance(int maxNumberOfParkingSlots) {
+    public static ParkingLot getInstance(AutomatedTicketSystem ticketSystem,int maxNumberOfParkingSlots) {
         if (parkingLot == null) {
-            parkingLot = new ParkingLot(maxNumberOfParkingSlots);
+            parkingLot = new ParkingLot(ticketSystem,maxNumberOfParkingSlots);
+            ticketSystem.setParkingLot(parkingLot);
         }
         return parkingLot;
     }
@@ -37,22 +38,18 @@ public class ParkingLot {
         return ticketSystem;
     }
 
-    public void park(){
+    public void park() {
         ticketSystem.allocateParkingSlot();
     }
 
-    public void unPark(){
-        ticketSystem.freeParkingSlot();
-    }
-
     public boolean isParkingLotFull() {
-        if(occupiedParkingSlots==maxNumberOfParkingSlots){
+        if (occupiedParkingSlots == maxNumberOfParkingSlots) {
             return true;
         }
         return false;
     }
 
-    public int getNearestParkingSlotNumberToTheEntry(){
-        return 1;
+    public void unPark() {
+        ticketSystem.freeParkingSlot();
     }
 }
