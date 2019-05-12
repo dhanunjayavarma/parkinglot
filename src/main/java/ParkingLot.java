@@ -42,18 +42,24 @@ public class ParkingLot {
         ticketSystem.allocateTicket(car);
     }
 
+    public void unPark(int parkingSlotNumber) {
+        ticketSystem.collectTicket(parkingSlotNumber);
+    }
+
     public boolean isParkingLotFull() {
         if (occupiedParkingSlots == maxNumberOfParkingSlots) {
             return true;
         }
         return false;
     }
-    public boolean isParkingLotEmpty(){
+
+    public boolean isParkingLotEmpty() {
         if (occupiedParkingSlots == 0) {
             return true;
         }
         return false;
     }
+
     public void allocateParkingSlot(int parkingSlotNumber, Car car) {
         makeParkingSlotUnavailable(parkingSlotNumber);
         parkingSlots.get(parkingSlotNumber).setCar(car);
@@ -67,10 +73,6 @@ public class ParkingLot {
     public void freeParkingSlot(int parkingSlotNumber) {
         parkingSlots.get(parkingSlotNumber).setFree(true);
         occupiedParkingSlots--;
-    }
-
-    public void unPark(int parkingSlotNumber) {
-        ticketSystem.collectTicket(parkingSlotNumber);
     }
 
     public void showStatus() {
