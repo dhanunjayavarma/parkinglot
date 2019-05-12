@@ -12,15 +12,15 @@ public class ParkingLotTest {
     @Before
     public void SetUp() {
         ticketSystem = mock(AutomatedTicketSystem.class);
-        parkingLot = ParkingLot.getInstance(ticketSystem,3);
+        parkingLot = ParkingLot.getInstance(ticketSystem, 3);
         parkingLot.ticketSystem = ticketSystem;
     }
 
     @Test
     public void TestPark() {
-        Car car=getCar("123",Colour.WHITE);
+        Car car = getCar("123", Colour.WHITE);
         parkingLot.park(car);
-        verify(ticketSystem,times(1)).allocateTicket(car);
+        verify(ticketSystem, times(1)).allocateTicket(car);
     }
 
     @Test
@@ -36,15 +36,18 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void TestFor_AllocateParkingSlot(){
-            parkingLot.allocateParkingSlot(1,getCar("121",Colour.GREEN));
-            parkingLot.allocateParkingSlot(2,getCar("121",Colour.GREEN));
-            parkingLot.allocateParkingSlot(3,getCar("121",Colour.GREEN));
-            Assert.assertEquals(true,parkingLot.isParkingLotFull());
+    public void TestFor_AllocateParkingSlot() {
+        parkingLot.allocateParkingSlot(1, getCar("121", Colour.GREEN));
+        parkingLot.allocateParkingSlot(2, getCar("121", Colour.GREEN));
+        parkingLot.allocateParkingSlot(3, getCar("121", Colour.GREEN));
+        Assert.assertEquals(true, parkingLot.isParkingLotFull());
+        parkingLot.freeParkingSlot(1);
+        parkingLot.freeParkingSlot(2);
+        parkingLot.freeParkingSlot(3);
     }
 
-    public Car getCar(String registrationNumber,Colour colour){
-        return new Car(registrationNumber,colour);
+    public Car getCar(String registrationNumber, Colour colour) {
+        return new Car(registrationNumber, colour);
     }
 
 }
