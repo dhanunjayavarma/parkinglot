@@ -46,6 +46,11 @@ public class ParkingLotTest {
         parkingLot.freeParkingSlot(3);
     }
 
+    @Test
+    public void TestFor_isParkingLotEmpty(){
+        System.out.println("Test Fails");
+    }
+
     public Car getCar(String registrationNumber, Colour colour) {
         return new Car(registrationNumber, colour);
     }
