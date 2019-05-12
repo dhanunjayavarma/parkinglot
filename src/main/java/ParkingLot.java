@@ -72,4 +72,21 @@ public class ParkingLot {
     public void unPark(int parkingSlotNumber) {
         ticketSystem.collectTicket(parkingSlotNumber);
     }
+
+    public void showStatus() {
+        if (!isParkingLotEmpty()) {
+            System.out.println("Slot No.    RegistrationNo     Colour");
+            for (Map.Entry<Integer, ParkingSlot> entry : parkingSlots.entrySet()) {
+                if (!entry.getValue().isFree()) {
+
+                    System.out.println(entry.getKey() + "           " + entry.getValue().getCar().getRegistrationNumber() + "      "
+                            + entry.getValue().getCar().getColour());
+                }
+            }
+        } else {
+            System.out.println("Parking Lot is Empty");
+        }
+
+    }
+
 }
