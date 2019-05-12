@@ -3,11 +3,12 @@ import java.util.Map;
 
 public class ParkingLot {
     private static ParkingLot parkingLot;
-    Map<Integer, ParkingSlot> parkingSlots;
+    private Map<Integer, ParkingSlot> parkingSlots;
     AutomatedTicketSystem ticketSystem;
     private int maxNumberOfParkingSlots;
     private int ONE = 1;
     private int occupiedParkingSlots=0;
+
     private ParkingLot(int maxNumberOfParkingSlots) {
         ticketSystem=new AutomatedTicketSystem();
         this.maxNumberOfParkingSlots = maxNumberOfParkingSlots;
@@ -26,6 +27,14 @@ public class ParkingLot {
         for (int slotNumber = ONE; slotNumber <= maxNumberOfParkingSlots; slotNumber++) {
             parkingSlots.put(slotNumber, new ParkingSlot());
         }
+    }
+
+    public Map<Integer, ParkingSlot> getParkingSlots() {
+        return parkingSlots;
+    }
+
+    public AutomatedTicketSystem getTicketSystem() {
+        return ticketSystem;
     }
 
     public void park(){
