@@ -20,7 +20,7 @@ public class ParkingLotTest {
     public void TestPark() {
         Car car = getCar("123", Colour.WHITE);
         parkingLot.park(car);
-        verify(ticketSystem, times(1)).allocateTicket(car);
+        verify(ticketSystem, times(1)).issueTicket(car);
     }
 
     @Test
@@ -47,9 +47,17 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void TestFor_isParkingLotEmpty(){
-        boolean parkingLotEmpty=parkingLot.isParkingLotEmpty();
-        Assert.assertEquals(true,parkingLotEmpty);
+    public void TestFor_isParkingLotEmpty_PositiveCase() {
+        boolean parkingLotEmpty = parkingLot.isParkingLotEmpty();
+        Assert.assertEquals(true, parkingLotEmpty);
+    }
+
+    @Test
+    public void TestFor_isParkingLotEmpty_NegativeCase() {
+        parkingLot.allocateParkingSlot(1, getCar("121", Colour.GREEN));
+        boolean parkingLotEmpty = parkingLot.isParkingLotEmpty();
+        Assert.assertEquals(false, parkingLotEmpty);
+        parkingLot.freeParkingSlot(1);
     }
 
     public Car getCar(String registrationNumber, Colour colour) {

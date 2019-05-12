@@ -13,9 +13,18 @@ public class AutomatedTicketSystemTest {
     }
 
     @Test
-    public void TestFor_AllocateTicket(){
+    public void TestFor_AllocateTicket_PositiveCase(){
         Car car=mock(Car.class);
-        ticketSystem.allocateTicket(car);
+        ticketSystem.issueTicket(car);
         Assert.assertEquals(false,parkingLot.isParkingLotEmpty());
     }
+
+    @Test
+    public void TestForCollectTicket(){
+        ticketSystem.issueTicket(mock(Car.class));
+        Assert.assertEquals(false,parkingLot.isParkingLotEmpty());
+        ticketSystem.collectTicket(1);
+        Assert.assertEquals(true,parkingLot.isParkingLotEmpty());
+    }
+
 }

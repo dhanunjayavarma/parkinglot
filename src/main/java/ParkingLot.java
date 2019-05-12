@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 import java.util.Map;
 
 public class ParkingLot {
@@ -30,16 +31,13 @@ public class ParkingLot {
         }
     }
 
-    public Map<Integer, ParkingSlot> getParkingSlots() {
-        return parkingSlots;
-    }
-
-    public AutomatedTicketSystem getTicketSystem() {
-        return ticketSystem;
-    }
-
     public void park(Car car) {
-        ticketSystem.allocateTicket(car);
+        if(!isParkingLotFull()){
+            ticketSystem.issueTicket(car);
+        }else{
+            System.out.println("Sorry, parking lot is full");
+        }
+
     }
 
     public void unPark(int parkingSlotNumber) {
@@ -64,6 +62,7 @@ public class ParkingLot {
         makeParkingSlotUnavailable(parkingSlotNumber);
         parkingSlots.get(parkingSlotNumber).setCar(car);
         occupiedParkingSlots++;
+        System.out.println("Allocated slot number:  "+parkingSlotNumber);
     }
 
     public void makeParkingSlotUnavailable(int parkingSlotNumber) {
@@ -72,7 +71,18 @@ public class ParkingLot {
 
     public void freeParkingSlot(int parkingSlotNumber) {
         parkingSlots.get(parkingSlotNumber).setFree(true);
+        parkingSlots.get(parkingSlotNumber).setCar(null);
         occupiedParkingSlots--;
+    }
+
+    public int getNearestParkingSlotNumberToTheEntry() {
+        int nearestParkingSlotNumber = 0;
+        for (Map.Entry<Integer, ParkingSlot> entry : parkingSlots.entrySet()) {
+            if (entry.getValue().isFree()) {
+                nearestParkingSlotNumber = entry.getKey();
+            }
+        }
+        return nearestParkingSlotNumber;
     }
 
     public void showStatus() {
@@ -80,7 +90,6 @@ public class ParkingLot {
             System.out.println("Slot No.    RegistrationNo     Colour");
             for (Map.Entry<Integer, ParkingSlot> entry : parkingSlots.entrySet()) {
                 if (!entry.getValue().isFree()) {
-
                     System.out.println(entry.getKey() + "           " + entry.getValue().getCar().getRegistrationNumber() + "      "
                             + entry.getValue().getCar().getColour());
                 }
