@@ -48,7 +48,8 @@ public class ParkingLotTest {
 
     @Test
     public void TestFor_isParkingLotEmpty(){
-        System.out.println("Test Fails");
+        boolean parkingLotEmpty=parkingLot.isParkingLotEmpty();
+        Assert.assertEquals(true,parkingLotEmpty);
     }
 
     public Car getCar(String registrationNumber, Colour colour) {
