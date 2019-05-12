@@ -17,4 +17,8 @@ public class ParkingLotTest {
         parkingLot.park();
         verify(ticketSystem,times(1)).allocateParkingSlot();
     }
+    @Test
+    public void TestForIsParkingLotFull(){
+        System.out.println("Test Fails");
+    }
 }
