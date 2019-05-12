@@ -49,6 +49,15 @@ public class ParkingLot {
         return false;
     }
 
+    public void allocateParkingSlot(int parkingSlotNumber, Car car) {
+        makeParkingSlotUnavailable(parkingSlotNumber);
+        parkingSlots.get(parkingSlotNumber).setCar(car);
+        occupiedParkingSlots++;
+    }
+
+    public void makeParkingSlotUnavailable(int parkingSlotNumber) {
+        parkingSlots.get(parkingSlotNumber).setFree(false);
+    }
     public void unPark(int parkingSlotNumber) {
         ticketSystem.collectTicket(parkingSlotNumber);
     }
