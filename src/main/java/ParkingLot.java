@@ -9,15 +9,15 @@ public class ParkingLot {
     private int ONE = 1;
     private int occupiedParkingSlots = 0;
 
-    private ParkingLot(AutomatedTicketSystem ticketSystem,int maxNumberOfParkingSlots) {
-        this.ticketSystem =ticketSystem;
+    private ParkingLot(AutomatedTicketSystem ticketSystem, int maxNumberOfParkingSlots) {
+        this.ticketSystem = ticketSystem;
         this.maxNumberOfParkingSlots = maxNumberOfParkingSlots;
         intializeParkingSpots(this.maxNumberOfParkingSlots);
     }
 
-    public static ParkingLot getInstance(AutomatedTicketSystem ticketSystem,int maxNumberOfParkingSlots) {
+    public static ParkingLot getInstance(AutomatedTicketSystem ticketSystem, int maxNumberOfParkingSlots) {
         if (parkingLot == null) {
-            parkingLot = new ParkingLot(ticketSystem,maxNumberOfParkingSlots);
+            parkingLot = new ParkingLot(ticketSystem, maxNumberOfParkingSlots);
             ticketSystem.setParkingLot(parkingLot);
         }
         return parkingLot;
@@ -48,7 +48,12 @@ public class ParkingLot {
         }
         return false;
     }
-
+    public boolean isParkingLotEmpty(){
+        if (occupiedParkingSlots == 0) {
+            return true;
+        }
+        return false;
+    }
     public void allocateParkingSlot(int parkingSlotNumber, Car car) {
         makeParkingSlotUnavailable(parkingSlotNumber);
         parkingSlots.get(parkingSlotNumber).setCar(car);
@@ -58,6 +63,12 @@ public class ParkingLot {
     public void makeParkingSlotUnavailable(int parkingSlotNumber) {
         parkingSlots.get(parkingSlotNumber).setFree(false);
     }
+
+    public void freeParkingSlot(int parkingSlotNumber) {
+        parkingSlots.get(parkingSlotNumber).setFree(true);
+        occupiedParkingSlots--;
+    }
+
     public void unPark(int parkingSlotNumber) {
         ticketSystem.collectTicket(parkingSlotNumber);
     }
