@@ -25,4 +25,8 @@ public class ParkingLotTest {
         boolean parkingLotFull=parkingLot.isParkingLotFull();
         Assert.assertEquals(false,parkingLotFull);
     }
+    @Test
+    public void TestForIsParkingLotFull_When_ParkingLot_IS_Full(){
+
+    }
 }

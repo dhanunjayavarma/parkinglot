@@ -7,6 +7,7 @@ public class ParkingLot {
     AutomatedTicketSystem ticketSystem;
     private int maxNumberOfParkingSlots;
     private int ONE = 1;
+    private int occupiedParkingSlots=0;
     private ParkingLot(int maxNumberOfParkingSlots) {
         ticketSystem=new AutomatedTicketSystem();
         this.maxNumberOfParkingSlots = maxNumberOfParkingSlots;
@@ -32,6 +33,9 @@ public class ParkingLot {
     }
 
     public boolean isParkingLotFull() {
+        if(occupiedParkingSlots==maxNumberOfParkingSlots){
+            return true;
+        }
         return false;
     }
 }
