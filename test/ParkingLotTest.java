@@ -10,12 +10,12 @@ public class ParkingLotTest {
     @Before
     public void SetUp(){
         parkingLot=ParkingLot.getInstance(3);
+        ticketSystem=mock(AutomatedTicketSystem.class);
+        parkingLot.ticketSystem=ticketSystem;
     }
 
     @Test
     public void TestPark(){
-        ticketSystem=mock(AutomatedTicketSystem.class);
-        parkingLot.ticketSystem=ticketSystem;
         parkingLot.park();
         verify(ticketSystem,times(1)).allocateParkingSlot();
     }
@@ -31,6 +31,7 @@ public class ParkingLotTest {
     }
     @Test
     public void TestForUnPark(){
-        parkingLot.unpark();
+        parkingLot.unPark();
+        verify(ticketSystem,times(1)).freeParkingSlot();
     }
 }
