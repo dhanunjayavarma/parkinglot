@@ -29,4 +29,8 @@ public class ParkingLotTest {
     public void TestForIsParkingLotFull_When_ParkingLot_IS_Full(){
 
     }
+    @Test
+    public void TestForUnPark(){
+        parkingLot.unpark();
+    }
 }
