@@ -30,12 +30,6 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void TestFor_IsParkingLotFull_Postive_Case(){
-        boolean parkingLotFull=parkingLot.isParkingLotFull();
-        Assert.assertEquals(false,parkingLotFull);
-    }
-
-    @Test
     public void TestForUnPark() {
         parkingLot.unPark(1);
         verify(ticketSystem, times(1)).collectTicket(1);
