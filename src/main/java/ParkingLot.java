@@ -38,4 +38,8 @@ public class ParkingLot {
         }
         return false;
     }
+
+    public void unPark(){
+        ticketSystem.freeParkingSlot();
+    }
 }
