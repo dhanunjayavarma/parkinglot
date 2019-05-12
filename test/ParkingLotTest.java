@@ -42,6 +42,10 @@ public class ParkingLotTest {
         verify(ticketSystem, times(1)).collectTicket(1);
     }
 
+    @Test
+    public void TestFor_AllocateParkingSlot(){
+        System.out.println("Test Fails");
+    }
     public Car getCar(){
         return new Car("123",Colour.GREEN);
     }
