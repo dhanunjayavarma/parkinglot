@@ -18,7 +18,7 @@ public class ParkingLotTest {
 
     @Test
     public void TestPark() {
-        Car car=new Car("123",Colour.GREEN);
+        Car car=getCar();
         parkingLot.park(car);
         verify(ticketSystem,times(1)).allocateTicket(car);
     }
@@ -30,13 +30,19 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void TestForIsParkingLotFull_When_ParkingLot_IS_Full() {
-
+    public void TestFor_IsParkingLotFull_Postive_Case(){
+        ParkingLot parkingLot1= ParkingLot.getInstance(ticketSystem,0);
+        boolean parkingLotFull=parkingLot1.isParkingLotFull();
+        Assert.assertEquals(false,parkingLotFull);
     }
 
     @Test
     public void TestForUnPark() {
         parkingLot.unPark(1);
         verify(ticketSystem, times(1)).collectTicket(1);
+    }
+
+    public Car getCar(){
+        return new Car("123",Colour.GREEN);
     }
 }
