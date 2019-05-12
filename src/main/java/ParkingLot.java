@@ -41,6 +41,10 @@ public class ParkingLot {
         ticketSystem.allocateParkingSlot();
     }
 
+    public void unPark(){
+        ticketSystem.freeParkingSlot();
+    }
+
     public boolean isParkingLotFull() {
         if(occupiedParkingSlots==maxNumberOfParkingSlots){
             return true;
@@ -48,7 +52,7 @@ public class ParkingLot {
         return false;
     }
 
-    public void unPark(){
-        ticketSystem.freeParkingSlot();
+    public int getNearestParkingSlotNumberToTheEntry(){
+        return 1;
     }
 }

@@ -15,23 +15,31 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void TestPark(){
+    public void TestFor_Park(){
         parkingLot.park();
         verify(ticketSystem,times(1)).allocateParkingSlot();
     }
 
     @Test
-    public void TestForIsParkingLotFull(){
+    public void TestFor_IsParkingLotFull(){
         boolean parkingLotFull=parkingLot.isParkingLotFull();
         Assert.assertEquals(false,parkingLotFull);
     }
+
     @Test
     public void TestForIsParkingLotFull_When_ParkingLot_IS_Full(){
 
     }
+
     @Test
-    public void TestForUnPark(){
+    public void TestFor_UnPark(){
         parkingLot.unPark();
         verify(ticketSystem,times(1)).freeParkingSlot();
+    }
+
+    @Test
+    public void TestFor_GetNearestParkingSlotNumberToTheEntry(){
+        int parkingSlotNumber=parkingLot.getNearestParkingSlotNumberToTheEntry();
+        Assert.assertEquals(1,parkingSlotNumber);
     }
 }
