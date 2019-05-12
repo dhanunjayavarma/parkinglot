@@ -18,8 +18,9 @@ public class ParkingLotTest {
 
     @Test
     public void TestPark() {
-        parkingLot.park();
-        verify(ticketSystem, times(1)).allocateParkingSlot();
+        Car car=new Car("123",Colour.GREEN);
+        parkingLot.park(car);
+        verify(ticketSystem,times(1)).allocateTicket(car);
     }
 
     @Test
@@ -35,7 +36,7 @@ public class ParkingLotTest {
 
     @Test
     public void TestForUnPark() {
-        parkingLot.unPark();
-        verify(ticketSystem, times(1)).freeParkingSlot();
+        parkingLot.unPark(1);
+        verify(ticketSystem, times(1)).collectTicket(1);
     }
 }

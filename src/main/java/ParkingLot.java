@@ -38,8 +38,8 @@ public class ParkingLot {
         return ticketSystem;
     }
 
-    public void park() {
-        ticketSystem.allocateParkingSlot();
+    public void park(Car car) {
+        ticketSystem.allocateTicket(car);
     }
 
     public boolean isParkingLotFull() {
@@ -49,7 +49,7 @@ public class ParkingLot {
         return false;
     }
 
-    public void unPark() {
-        ticketSystem.freeParkingSlot();
+    public void unPark(int parkingSlotNumber) {
+        ticketSystem.collectTicket(parkingSlotNumber);
     }
 }
