@@ -1,18 +1,20 @@
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
+import org.mockito.Mock;
+import static org.mockito.Mockito.*;
 public class ParkingLotTest {
+    AutomatedTicketSystem ticketSystem;
     ParkingLot parkingLot;
-
     @Before
     public void SetUp(){
-        parkingLot=new ParkingLot();
+        parkingLot=ParkingLot.getInstance(3);
     }
 
     @Test
     public void TestPark(){
-        System.out.println("Method Fails");
+        ticketSystem=mock(AutomatedTicketSystem.class);
+        parkingLot.ticketSystem=ticketSystem;
+        parkingLot.park();
+        verify(ticketSystem,times(1)).allocateParkingSlot();
     }
 }
