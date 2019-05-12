@@ -20,7 +20,7 @@ public class AutomatedTicketSystemTest {
     }
 
     @Test
-    public void TestForCollectTicket(){
+    public void TestFor_CollectTicket(){
         ticketSystem.issueTicket(mock(Car.class));
         Assert.assertEquals(false,parkingLot.isParkingLotEmpty());
         ticketSystem.collectTicket(1);
