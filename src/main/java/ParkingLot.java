@@ -30,4 +30,8 @@ public class ParkingLot {
     public void park(){
         ticketSystem.allocateParkingSlot();
     }
+
+    public boolean isParkingLotFull() {
+        return false;
+    }
 }

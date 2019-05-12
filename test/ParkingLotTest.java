@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -5,6 +6,7 @@ import static org.mockito.Mockito.*;
 public class ParkingLotTest {
     AutomatedTicketSystem ticketSystem;
     ParkingLot parkingLot;
+
     @Before
     public void SetUp(){
         parkingLot=ParkingLot.getInstance(3);
@@ -17,8 +19,10 @@ public class ParkingLotTest {
         parkingLot.park();
         verify(ticketSystem,times(1)).allocateParkingSlot();
     }
+
     @Test
     public void TestForIsParkingLotFull(){
-        System.out.println("Test Fails");
+        boolean parkingLotFull=parkingLot.isParkingLotFull();
+        Assert.assertEquals(false,parkingLotFull);
     }
 }
