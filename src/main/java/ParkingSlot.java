@@ -1,5 +1,5 @@
 public class ParkingSlot {
-    private boolean free=true;
+    private boolean free = true;
     private int number;
     private Car car;
 
@@ -23,7 +23,7 @@ public class ParkingSlot {
         this.free = free;
     }
 
-    public boolean isFree(){
+    public boolean isFree() {
         return free;
     }
 }

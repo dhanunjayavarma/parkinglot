@@ -32,9 +32,9 @@ public class ParkingLot {
     }
 
     public void park(Car car) {
-        if(!isParkingLotFull()){
+        if (!isParkingLotFull()) {
             ticketSystem.issueTicket(car);
-        }else{
+        } else {
             System.out.println("Sorry, parking lot is full");
         }
 
@@ -62,7 +62,7 @@ public class ParkingLot {
         makeParkingSlotUnavailable(parkingSlotNumber);
         parkingSlots.get(parkingSlotNumber).setCar(car);
         occupiedParkingSlots++;
-        System.out.println("Allocated slot number:  "+parkingSlotNumber);
+        System.out.println("Allocated slot number:  " + parkingSlotNumber);
     }
 
     public void makeParkingSlotUnavailable(int parkingSlotNumber) {
@@ -73,13 +73,15 @@ public class ParkingLot {
         parkingSlots.get(parkingSlotNumber).setFree(true);
         parkingSlots.get(parkingSlotNumber).setCar(null);
         occupiedParkingSlots--;
+        System.out.println("Slot number " + parkingSlotNumber + " is free");
     }
 
     public int getNearestParkingSlotNumberToTheEntry() {
         int nearestParkingSlotNumber = 0;
-        for (Map.Entry<Integer, ParkingSlot> entry : parkingSlots.entrySet()) {
-            if (entry.getValue().isFree()) {
-                nearestParkingSlotNumber = entry.getKey();
+        for (int slotNumber = ONE; slotNumber <= maxNumberOfParkingSlots; slotNumber++) {
+            if (parkingSlots.get(slotNumber).isFree()) {
+                nearestParkingSlotNumber = slotNumber;
+                break;
             }
         }
         return nearestParkingSlotNumber;

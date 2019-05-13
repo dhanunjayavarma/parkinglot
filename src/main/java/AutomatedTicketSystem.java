@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+
 import java.util.HashMap;
 
 import java.util.List;
+
 import java.util.Map;
 
 public class AutomatedTicketSystem {
@@ -38,8 +40,11 @@ public class AutomatedTicketSystem {
 
     public void showRegistrationNumberOfCarsWithGivenColour(Colour colour) {
         List<String> registrationNumberList = getRegistrationNumberOfCarsWithGivenColour(colour);
-
-        showList(registrationNumberList);
+        if (registrationNumberList.isEmpty()) {
+            System.out.println("Not Found");
+        } else {
+            showList(registrationNumberList);
+        }
     }
 
     private List<String> getRegistrationNumberOfCarsWithGivenColour(Colour colour) {
@@ -54,13 +59,16 @@ public class AutomatedTicketSystem {
     }
 
     public void showSlotNumbersOfCarsWithGivenColour(Colour colour) {
-        List<Integer> slotNumberList = getSlotNumberOfCarsWithGivenColour(colour);
-        showList(slotNumberList);
+        List<Integer> slotNumbersList = getSlotNumberOfCarsWithGivenColour(colour);
+        if (slotNumbersList.isEmpty()) {
+            System.out.println("Not Found");
+        } else {
+            showList(slotNumbersList);
+        }
     }
 
     private List<Integer> getSlotNumberOfCarsWithGivenColour(Colour colour) {
         List<Integer> slotNumbersList = new ArrayList<Integer>();
-
         for (Map.Entry<Integer, ParkingLotDetalisVO> entry : parkingLotDetalis.entrySet()) {
             if (entry.getValue().getColour().equals(colour)) {
                 slotNumbersList.add(entry.getValue().getSlotNumber());
@@ -70,8 +78,13 @@ public class AutomatedTicketSystem {
     }
 
     public void showSlotNumbersOfCarsWithGivenRegistrationNumber(String registrationNumber) {
-        List<Integer> slotNumberList = getSlotNumberOfCarsWithGivenRegistrationNumber(registrationNumber);
-        showList(slotNumberList);
+        List<Integer> slotNumbersList = getSlotNumberOfCarsWithGivenRegistrationNumber(registrationNumber);
+        if (slotNumbersList.isEmpty()) {
+            System.out.println("Not Found");
+        } else {
+            showList(slotNumbersList);
+        }
+
     }
 
     private List<Integer> getSlotNumberOfCarsWithGivenRegistrationNumber(String registrationNumber) {
@@ -79,7 +92,7 @@ public class AutomatedTicketSystem {
         slotNumbersList = new ArrayList<Integer>();
 
         for (Map.Entry<Integer, ParkingLotDetalisVO> entry : parkingLotDetalis.entrySet()) {
-            if (entry.getValue().getColour().equals(registrationNumber)) {
+            if (entry.getValue().getRegistrationNumber().equals(registrationNumber)) {
                 slotNumbersList.add(entry.getValue().getSlotNumber());
             }
         }
