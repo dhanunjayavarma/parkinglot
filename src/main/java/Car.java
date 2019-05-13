@@ -1,7 +1,7 @@
 public class Car {
     private String registrationNumber;
     private Colour colour;
-    private String ticket;
+    private Driver driver;
 
     public Car(String registrationNumber, Colour colour) {
         this.registrationNumber = registrationNumber;
@@ -20,12 +20,12 @@ public class Car {
         return colour;
     }
 
-    public String getTicket() {
-        return ticket;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
 }

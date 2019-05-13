@@ -21,15 +21,15 @@ public class AutomatedTicketSystemTest {
         Car car = mock(Car.class);
         ticketSystem.setParkingLot(parkingLot);
         ticketSystem.issueTicket(car);
-        Assert.assertEquals(false, parkingLot.isParkingLotEmpty());
+        Assert.assertEquals(false, parkingLot.isEmpty());
     }
 
     @Test
     public void TestFor_CollectTicket() {
         ticketSystem.issueTicket(mock(Car.class));
-        Assert.assertEquals(false, parkingLot.isParkingLotEmpty());
+        Assert.assertEquals(false, parkingLot.isEmpty());
         ticketSystem.collectTicket(1);
-        Assert.assertEquals(true, parkingLot.isParkingLotEmpty());
+        Assert.assertEquals(true, parkingLot.isEmpty());
     }
 
 }

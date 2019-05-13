@@ -18,7 +18,7 @@ public class AutomatedTicketSystem {
     public void issueTicket(Car car) {
         final int availableParkingSlotNumber = parkingLot.getNearestParkingSlotNumberToTheEntry();
         String ticket = genarateTicket(availableParkingSlotNumber, car.getRegistrationNumber());
-        car.setTicket(ticket);
+        car.getDriver().setTicket(ticket);
         parkingLot.allocateParkingSlot(availableParkingSlotNumber, car);
         saveParkingLotDetails(availableParkingSlotNumber, car.getRegistrationNumber(), car.getColour());
     }

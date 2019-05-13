@@ -29,10 +29,11 @@ public class ParkingLot {
         for (int slotNumber = ONE; slotNumber <= maxNumberOfParkingSlots; slotNumber++) {
             parkingSlots.put(slotNumber, new ParkingSlot());
         }
+        System.out.println("create_parking_lot "+maxNumberOfParkingSlots);
     }
 
     public void park(Car car) {
-        if (!isParkingLotFull()) {
+        if (!isFull()) {
             ticketSystem.issueTicket(car);
         } else {
             System.out.println("Sorry, parking lot is full");
@@ -44,14 +45,14 @@ public class ParkingLot {
         ticketSystem.collectTicket(parkingSlotNumber);
     }
 
-    public boolean isParkingLotFull() {
+    public boolean isFull() {
         if (occupiedParkingSlots == maxNumberOfParkingSlots) {
             return true;
         }
         return false;
     }
 
-    public boolean isParkingLotEmpty() {
+    public boolean isEmpty() {
         if (occupiedParkingSlots == 0) {
             return true;
         }
@@ -88,7 +89,7 @@ public class ParkingLot {
     }
 
     public void showStatus() {
-        if (!isParkingLotEmpty()) {
+        if (!isEmpty()) {
             System.out.println("Slot No.    RegistrationNo     Colour");
             for (Map.Entry<Integer, ParkingSlot> entry : parkingSlots.entrySet()) {
                 if (!entry.getValue().isFree()) {

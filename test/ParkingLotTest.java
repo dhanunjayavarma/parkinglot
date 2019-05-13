@@ -28,7 +28,7 @@ public class ParkingLotTest {
 
     @Test
     public void TestForIsParkingLotFull() {
-        boolean parkingLotFull = parkingLot.isParkingLotFull();
+        boolean parkingLotFull = parkingLot.isFull();
         Assert.assertEquals(false, parkingLotFull);
     }
 
@@ -43,7 +43,7 @@ public class ParkingLotTest {
         parkingLot.allocateParkingSlot(1, getCar("121", Colour.GREEN));
         parkingLot.allocateParkingSlot(2, getCar("121", Colour.GREEN));
         parkingLot.allocateParkingSlot(3, getCar("121", Colour.GREEN));
-        Assert.assertEquals(true, parkingLot.isParkingLotFull());
+        Assert.assertEquals(true, parkingLot.isFull());
         parkingLot.freeParkingSlot(1);
         parkingLot.freeParkingSlot(2);
         parkingLot.freeParkingSlot(3);
@@ -51,14 +51,14 @@ public class ParkingLotTest {
 
     @Test
     public void TestFor_isParkingLotEmpty_PositiveCase() {
-        boolean parkingLotEmpty = parkingLot.isParkingLotEmpty();
+        boolean parkingLotEmpty = parkingLot.isEmpty();
         Assert.assertEquals(true, parkingLotEmpty);
     }
 
     @Test
     public void TestFor_isParkingLotEmpty_NegativeCase() {
         parkingLot.allocateParkingSlot(1, getCar("121", Colour.GREEN));
-        boolean parkingLotEmpty = parkingLot.isParkingLotEmpty();
+        boolean parkingLotEmpty = parkingLot.isEmpty();
         Assert.assertEquals(false, parkingLotEmpty);
         parkingLot.freeParkingSlot(1);
     }
