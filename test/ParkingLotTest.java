@@ -64,7 +64,7 @@ public class ParkingLotTest {
     }
 
     public Car getCar(String registrationNumber, Colour colour) {
-        return new Car(registrationNumber, colour);
+        return new Car(registrationNumber, colour,new Driver());
     }
 
 }

@@ -74,7 +74,7 @@ public class ParkingLotApplication {
             final String[] commandArray = command.split(" ");
             final String registrationNumber = commandArray[1];
             final Colour colour = Colour.valueOf(commandArray[2].toUpperCase());
-            Car car = new Car(registrationNumber, colour);
+            Car car = new Car(registrationNumber, colour,new Driver());
             parkingLot.park(car);
 
         } else if (command.startsWith("leave")) {

@@ -3,9 +3,10 @@ public class Car {
     private Colour colour;
     private Driver driver;
 
-    public Car(String registrationNumber, Colour colour) {
+    public Car(String registrationNumber, Colour colour,Driver driver) {
         this.registrationNumber = registrationNumber;
         this.colour = colour;
+        this.driver=driver;
     }
 
     public String getRegistrationNumber() {
