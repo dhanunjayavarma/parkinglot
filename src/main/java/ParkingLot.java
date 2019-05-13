@@ -29,7 +29,7 @@ public class ParkingLot {
         for (int slotNumber = ONE; slotNumber <= maxNumberOfParkingSlots; slotNumber++) {
             parkingSlots.put(slotNumber, new ParkingSlot());
         }
-        System.out.println("create_parking_lot "+maxNumberOfParkingSlots);
+        System.out.println("created a parking lot with "+maxNumberOfParkingSlots);
     }
 
     public void park(Car car) {
