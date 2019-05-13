@@ -36,7 +36,7 @@ public class ParkingLotApplication {
     private static void readFromFile() throws IOException {
 
         try {
-            File file = new File("bin/parking_lot file_inputs");
+            File file = new File("../../../bin/parking_lot file_inputs");
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
 
